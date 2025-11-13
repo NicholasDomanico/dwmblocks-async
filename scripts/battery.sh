@@ -3,9 +3,8 @@
 
 status=$(cat /sys/class/power_supply/BAT0/status)
 charge=$(cat /sys/class/power_supply/BAT0/capacity)
-
 case $BLOCK_BUTTON in 
-    1) notify-send -h string:bgcolor:$background -h string:fgcolor:$color2 -a "" -i NONE "$(acpi -b)"
+    1) notify-send -t 2000 -h string:bgcolor:$background -h string:fgcolor:$color2 -a "" -i NONE "$(acpi -b)"
 esac
 
 case $status in
@@ -19,16 +18,18 @@ case $status in
         color="$color6" ;;
 esac
 
+red=#ff0f00
+
 if [ $charge -gt 80 ]; then
     echo "^c$color^ "
-elif [ $charge -gt 60 && -le 80 ]; then
+elif [ $charge -gt 60 -a $charge -le 80 ]; then
     echo "^c$color^ "
-elif [ $charge -gt 40 && -le 60 ]; then
+elif [ $charge -gt 40 -a $charge -le 60 ]; then
     echo "^c$color^ "
-elif [ $charge -gt 15 && -le 40 ]; then
-    echo "^$color^ "
-elif [ $charge -gt 0 && -le 15 ]; then 
-    echo "^#ff0f00^ "
+elif [ $charge -gt 15 -a $charge -le 40 ]; then
+    echo "^c$color^ "
+elif [ $charge -le 15 ]; then 
+    echo "^c$red^ "
 fi
 
 

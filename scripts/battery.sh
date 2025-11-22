@@ -21,15 +21,15 @@ esac
 red=#ff0f00
 
 if [ $charge -gt 80 ]; then
-    echo "^c$color^ "
+    echo "^c$color^  "
 elif [ $charge -gt 60 -a $charge -le 80 ]; then
-    echo "^c$color^ "
+    echo "^c$color^  "
 elif [ $charge -gt 40 -a $charge -le 60 ]; then
-    echo "^c$color^ "
+    echo "^c$color^  "
 elif [ $charge -gt 15 -a $charge -le 40 ]; then
-    echo "^c$color^ "
+    echo "^c$color^  "
 elif [ $charge -le 15 ]; then 
-    echo "^c$red^ "
+    echo "^c$red^  "
 fi
 
 

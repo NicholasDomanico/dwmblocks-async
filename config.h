@@ -2,7 +2,7 @@
 #define CONFIG_H
 
 // String used to delimit block outputs in the status.
-#define DELIMITER " "
+#define DELIMITER ""
 
 // Maximum number of Unicode characters that a block can output.
 #define MAX_BLOCK_OUTPUT_LENGTH 45
@@ -20,6 +20,7 @@
 #define BLOCKS(X)             \
     X("", "/home/nicholas/dwmblocks-async/scripts/date.sh", 1, 1) \
     X("", "/home/nicholas/dwmblocks-async/scripts/clock.sh", 1, 2) \
+    X("", "/home/nicholas/dwmblocks-async/scripts/cpu_temp.sh", 10, 5) \
     X("", "/home/nicholas/dwmblocks-async/scripts/battery.sh", 5, 3) \
     X("", "/home/nicholas/dwmblocks-async/scripts/powerbutton.sh", 0, 4) \
 

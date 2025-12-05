@@ -5,4 +5,4 @@ case $BLOCK_BUTTON in
     1) ~/dwmblocks-async/scripts/powermenu.sh
 esac
 
-echo "^c$color10^  |"
+echo "^c$color10^ " 

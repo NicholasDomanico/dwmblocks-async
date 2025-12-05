@@ -9,4 +9,4 @@ case $BLOCK_BUTTON in
     1) notify-send -t 2000 -h string:bgcolor:$background -h string:fgcolor:$color2 -a "" -i NONE "CPU Temp: $temp"
 esac
 
-echo "^c$color^ "
+echo "^c$color^"

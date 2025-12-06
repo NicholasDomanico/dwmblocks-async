@@ -6,7 +6,7 @@ case $BLOCK_BUTTON in
 esac
 
 volume_raw=$(wpctl get-volume @DEFAULT_SINK@ | grep -Po "(?<=\: ).*") 
-status=$(wpctl get-volume @DEFAULT_SINK@ | grep -o "\[MUTED\]")
+status=$(echo $volume_raw | grep -o "\[MUTED\]")
 
 volume=$(echo "($volume_raw * 100)/1" | bc)
 

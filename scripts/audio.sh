@@ -1,6 +1,10 @@
 #! /bin/sh
 . ~/.cache/wal/colors.sh
 
+case $BLOCK_BUTTON in 
+    1) pavucontrol 
+esac
+
 volume_raw=$(wpctl get-volume @DEFAULT_SINK@ | grep -Po "(?<=\: ).*") 
 status=$(wpctl get-volume @DEFAULT_SINK@ | grep -o "\[MUTED\]")
 

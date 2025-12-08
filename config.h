@@ -21,6 +21,7 @@
     X("", "/home/nicholas/dwmblocks-async/scripts/date.sh", 1, 1) \
     X("", "/home/nicholas/dwmblocks-async/scripts/clock.sh", 1, 2) \
     X("", "/home/nicholas/dwmblocks-async/scripts/audio.sh", 0, 6) \
+    X("", "/home/nicholas/dwmblocks-async/scripts/wifi.sh", 5, 9) \
     X("", "/home/nicholas/dwmblocks-async/scripts/cpu_temp.sh", 10, 5) \
     X("", "/home/nicholas/dwmblocks-async/scripts/battery.sh", 5, 3) \
     X("", "/home/nicholas/dwmblocks-async/scripts/powerbutton.sh", 0, 4) \

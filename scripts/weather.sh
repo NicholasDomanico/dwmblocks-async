@@ -20,7 +20,7 @@ if [ ! -f "$weatherFile" ]; then
 fi
 
 getCurrentWeather() {
-    curl -s "https://wttr.in/port-richey?format=1" | sed -e "s/\ \ +/\ /" -e "s/F//" > $currentWeatherFile
+    curl -s "https://wttr.in/port-richey?format=1" | sed -e "s/\ \ +/\ /" -e "s/F//" -e "s/\xEF\xB8\x8F//g" > $currentWeatherFile
 }
 
 getWeather() {
@@ -30,6 +30,10 @@ getWeather() {
 timeLastChecked=$(date -r $currentWeatherFile +%s)
 currentTime=$(date "+%s")
 if [ $((currentTime - $timeLastChecked)) -gt 1800 ]; then
+    ping -c 1 wttr.in
+    if [ $? -ne 0 ]; then
+        exit
+    fi
     getCurrentWeather
     sleep 5
     getWeather
@@ -40,10 +44,7 @@ feelsLike=$(cat $weatherFile | jq -r ".current_condition.[0].FeelsLikeF")
 humidity=$(cat $weatherFile | jq -r ".current_condition.[0].humidity")
 description=$(cat $weatherFile | jq -r ".current_condition.[0].weatherDesc.[0].value")
 
-
-
-icon=$(cat "$currentWeatherFile" | cut -c 1-3)
-temp=$(cat "$currentWeatherFile" | rev | cut -c 1-4 | rev)
+icon=$(cat "$currentWeatherFile")
 
 currenwConditions=$(echo "$description\n${temp}F\nFeels Like ${feelsLike}°F\nHumidity ${humidity}%")
 
@@ -51,4 +52,4 @@ case $BLOCK_BUTTON in
     1) notify-send -h string:bgcolor:$background -h string:fgcolor:$color2 -a "" -i NONE "$currenwConditions"
 esac
 
-echo "$icon $temp"
+echo "$icon"
